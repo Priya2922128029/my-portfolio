@@ -22,9 +22,10 @@ const Projects = () => {
         "Chart.js",
         "Responsive UI",
       ],
-      accent: "CITY",
-      symbol: "◈",
+      image: "/images/projects/smart-city.png",
+      url: "https://priya2922128029.github.io/Smart-City-Dashboard/",
     },
+
     {
       number: "02",
       year: "2025",
@@ -41,9 +42,10 @@ const Projects = () => {
         "REST API",
         "Chart.js",
       ],
-      accent: "TEST",
-      symbol: "⌁",
+      image: "/images/projects/skill-bridge.png",
+      url: null,
     },
+
     {
       number: "03",
       year: "2025",
@@ -60,8 +62,48 @@ const Projects = () => {
         "Git",
         "GitHub",
       ],
-      accent: "DOCS",
-      symbol: "□",
+      image: "/images/projects/portdocs.png",
+      url: null,
+    },
+
+    {
+      number: "04",
+      year: "2026",
+      title: "TRAVEL",
+      subtitle: "PLANNER",
+      category: "TRAVEL PLANNING WEB APPLICATION",
+      description:
+        "A responsive travel planning application that helps users discover destinations, organize trips, manage daily activities, track travel budgets and create personalized travel plans.",
+      tech: [
+        "React.js",
+        "JavaScript",
+        "Chart.js",
+        "React Router",
+        "Responsive UI",
+        "Vercel",
+      ],
+      image: "/images/projects/travel-planner.png",
+      url: "https://trip-planning-eight.vercel.app/",
+    },
+
+    {
+      number: "05",
+      year: "2026",
+      title: "MY",
+      subtitle: "PORTFOLIO",
+      category: "PERSONAL PORTFOLIO WEBSITE",
+      description:
+        "A modern personal portfolio website designed to showcase my frontend development skills, professional experience, projects and contact information through a responsive and interactive interface.",
+      tech: [
+        "React.js",
+        "JavaScript",
+        "CSS3",
+        "Material UI",
+        "Responsive UI",
+        "Git / GitHub",
+      ],
+      image: "/images/projects/portfolio.png",
+      url: "https://my-portfolio-blond-one-17.vercel.app/",
     },
   ];
 
@@ -91,9 +133,8 @@ const Projects = () => {
   ===================================================== */
 
   useEffect(() => {
-    const elements = document.querySelectorAll(
-      ".project-reveal"
-    );
+    const elements =
+      document.querySelectorAll(".project-reveal");
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -110,7 +151,9 @@ const Projects = () => {
       }
     );
 
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach((el) =>
+      observer.observe(el)
+    );
 
     return () => observer.disconnect();
   }, []);
@@ -121,21 +164,21 @@ const Projects = () => {
 
   const handleTilt = (event) => {
     const card = event.currentTarget;
-    const rect = card.getBoundingClientRect();
+
+    const rect =
+      card.getBoundingClientRect();
 
     const x =
-      event.clientX -
-      rect.left;
+      event.clientX - rect.left;
 
     const y =
-      event.clientY -
-      rect.top;
+      event.clientY - rect.top;
 
     const rotateY =
-      (x / rect.width - 0.5) * 12;
+      (x / rect.width - 0.5) * 8;
 
     const rotateX =
-      (y / rect.height - 0.5) * -12;
+      (y / rect.height - 0.5) * -8;
 
     card.style.transform = `
       perspective(1200px)
@@ -146,8 +189,23 @@ const Projects = () => {
   };
 
   const resetTilt = (event) => {
-    event.currentTarget.style.transform =
-      "";
+    event.currentTarget.style.transform = "";
+  };
+
+  /* =====================================================
+     OPEN PROJECT
+  ===================================================== */
+
+  const openProject = () => {
+    if (!project.url) {
+      return;
+    }
+
+    window.open(
+      project.url,
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   const project =
@@ -159,7 +217,6 @@ const Projects = () => {
       className="projects-section"
       id="projects"
     >
-
       <style>{`
 
         /* =====================================================
@@ -171,6 +228,7 @@ const Projects = () => {
           min-height: 100vh;
           padding: 120px 6vw 140px;
           overflow: hidden;
+
           background:
             radial-gradient(
               circle at 85% 15%,
@@ -183,6 +241,7 @@ const Projects = () => {
               transparent 25%
             ),
             #f2f2f0;
+
           color: #111;
           isolation: isolate;
         }
@@ -195,17 +254,22 @@ const Projects = () => {
           position: absolute;
           top: 80px;
           left: -20px;
+
           font-size: clamp(
             130px,
             20vw,
             300px
           );
+
           font-weight: 950;
           letter-spacing: -15px;
           line-height: .7;
+
           color: rgba(0,0,0,.035);
+
           pointer-events: none;
           white-space: nowrap;
+
           z-index: -2;
         }
 
@@ -215,9 +279,12 @@ const Projects = () => {
 
         .projects-cursor {
           position: absolute;
+
           width: 300px;
           height: 300px;
+
           border-radius: 50%;
+
           pointer-events: none;
 
           background:
@@ -252,6 +319,7 @@ const Projects = () => {
           display: flex;
           align-items: center;
           gap: 14px;
+
           margin-bottom: 25px;
 
           font-size: 9px;
@@ -279,6 +347,7 @@ const Projects = () => {
 
         .projects-outline {
           color: transparent;
+
           -webkit-text-stroke:
             2px #111;
         }
@@ -324,15 +393,20 @@ const Projects = () => {
 
           margin-bottom: 90px;
 
-          border-top: 1px solid rgba(0,0,0,.12);
-          border-bottom: 1px solid rgba(0,0,0,.12);
+          border-top:
+            1px solid rgba(0,0,0,.12);
+
+          border-bottom:
+            1px solid rgba(0,0,0,.12);
 
           padding: 18px 0;
         }
 
         .project-tech-track {
           display: flex;
+
           width: max-content;
+
           gap: 45px;
 
           animation:
@@ -356,7 +430,9 @@ const Projects = () => {
         .project-tech-dot {
           width: 5px;
           height: 5px;
+
           border-radius: 50%;
+
           background: #5c4dff;
         }
 
@@ -440,6 +516,7 @@ const Projects = () => {
           margin: 0 auto;
 
           display: grid;
+
           grid-template-columns:
             1.1fr .9fr;
 
@@ -447,7 +524,7 @@ const Projects = () => {
         }
 
         /* =====================================================
-           VISUAL PANEL
+           PROJECT IMAGE PANEL
         ===================================================== */
 
         .project-visual {
@@ -468,100 +545,74 @@ const Projects = () => {
           transition:
             transform .6s
             cubic-bezier(.16,1,.3,1),
+
             box-shadow .5s ease;
         }
 
         .project-visual:hover {
           box-shadow:
             0 35px 80px
-            rgba(0,0,0,.2);
+            rgba(0,0,0,.20);
         }
 
         /* =====================================================
-           VISUAL GRID
+           ACTUAL PROJECT IMAGE
         ===================================================== */
 
-        .project-grid {
+        .project-preview-image {
           position: absolute;
+
           inset: 0;
 
-          background-image:
-            linear-gradient(
-              rgba(255,255,255,.06) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(255,255,255,.06) 1px,
-              transparent 1px
-            );
+          width: 100%;
+          height: 100%;
 
-          background-size:
-            45px 45px;
+          object-fit: cover;
 
-          transform:
-            perspective(500px)
-            rotateX(55deg)
-            translateY(150px)
-            scale(1.4);
+          object-position: center;
 
-          opacity: .35;
+          display: block;
+
+          transition:
+            transform .8s
+            cubic-bezier(.16,1,.3,1),
+            filter .5s ease;
+        }
+
+        .project-visual:hover
+        .project-preview-image {
+          transform: scale(1.045);
+
+          filter:
+            brightness(.82)
+            contrast(1.04);
         }
 
         /* =====================================================
-           BIG SYMBOL
+           IMAGE OVERLAY
         ===================================================== */
 
-        .project-symbol {
+        .project-image-overlay {
           position: absolute;
 
-          top: 50%;
-          left: 50%;
+          inset: 0;
 
-          transform:
-            translate(-50%,-50%);
-
-          font-size:
-            clamp(
-              130px,
-              18vw,
-              250px
+          background:
+            linear-gradient(
+              to bottom,
+              rgba(0,0,0,.48) 0%,
+              rgba(0,0,0,.05) 38%,
+              rgba(0,0,0,.10) 55%,
+              rgba(0,0,0,.78) 100%
             );
 
-          font-weight: 900;
+          pointer-events: none;
 
-          color: transparent;
-
-          -webkit-text-stroke:
-            1px rgba(
-              255,255,255,.35
-            );
-
-          animation:
-            symbolFloat
-            5s ease-in-out infinite;
-        }
-
-        @keyframes symbolFloat {
-
-          0%,100% {
-            transform:
-              translate(-50%,-50%)
-              rotate(-5deg)
-              scale(1);
-          }
-
-          50% {
-            transform:
-              translate(-50%,-55%)
-              rotate(5deg)
-              scale(1.08);
-          }
-
+          z-index: 2;
         }
 
         /* =====================================================
-           VISUAL LABELS
+           IMAGE TOP
         ===================================================== */
 
         .project-visual-top {
@@ -575,21 +626,92 @@ const Projects = () => {
           justify-content:
             space-between;
 
+          align-items: center;
+
           color: white;
+
+          z-index: 5;
         }
 
         .project-visual-number {
           font-size: 9px;
           font-weight: 900;
           letter-spacing: 2px;
-          opacity: .6;
+
+          text-shadow:
+            0 2px 10px
+            rgba(0,0,0,.3);
         }
 
         .project-visual-category {
+          max-width: 60%;
+
           font-size: 8px;
           letter-spacing: 2px;
-          opacity: .6;
+          text-align: right;
+
+          opacity: .85;
+
+          text-shadow:
+            0 2px 10px
+            rgba(0,0,0,.3);
         }
+
+        /* =====================================================
+           IMAGE BADGE
+        ===================================================== */
+
+        .project-image-badge {
+          position: absolute;
+
+          left: 25px;
+          top: 75px;
+
+          z-index: 6;
+
+          padding:
+            7px 11px;
+
+          border-radius: 30px;
+
+          background:
+            rgba(255,255,255,.16);
+
+          border:
+            1px solid
+            rgba(255,255,255,.28);
+
+          backdrop-filter:
+            blur(10px);
+
+          color: white;
+
+          font-size: 7px;
+
+          font-weight: 900;
+
+          letter-spacing: 1.5px;
+
+          opacity: 0;
+
+          transform:
+            translateY(8px);
+
+          transition:
+            .4s ease;
+        }
+
+        .project-visual:hover
+        .project-image-badge {
+          opacity: 1;
+
+          transform:
+            translateY(0);
+        }
+
+        /* =====================================================
+           IMAGE BOTTOM
+        ===================================================== */
 
         .project-visual-bottom {
           position: absolute;
@@ -599,26 +721,41 @@ const Projects = () => {
           bottom: 25px;
 
           display: flex;
+
           justify-content:
             space-between;
 
           align-items: flex-end;
 
           color: white;
+
+          z-index: 5;
         }
 
         .project-visual-year {
           font-size: 70px;
+
           font-weight: 950;
+
           line-height: .7;
+
           letter-spacing: -5px;
+
+          text-shadow:
+            0 4px 20px
+            rgba(0,0,0,.3);
         }
 
         .project-visual-mini {
           font-size: 8px;
+
           letter-spacing: 2px;
-          opacity: .5;
+
+          opacity: .75;
+
           text-align: right;
+
+          line-height: 1.4;
         }
 
         /* =====================================================
@@ -684,19 +821,24 @@ const Projects = () => {
           position: relative;
 
           display: flex;
+
           justify-content:
             space-between;
         }
 
         .project-info-category {
           font-size: 9px;
+
           font-weight: 900;
+
           letter-spacing: 2px;
+
           color: #888;
         }
 
         .project-info-index {
           font-size: 10px;
+
           font-weight: 900;
         }
 
@@ -744,6 +886,7 @@ const Projects = () => {
           position: relative;
 
           display: flex;
+
           flex-wrap: wrap;
 
           gap: 7px;
@@ -760,7 +903,9 @@ const Projects = () => {
           background: #e7e7e5;
 
           font-size: 7px;
+
           font-weight: 900;
+
           letter-spacing: 1px;
 
           color: #555;
@@ -770,7 +915,9 @@ const Projects = () => {
 
         .project-info-tech span:hover {
           background: #111;
+
           color: white;
+
           transform:
             translateY(-4px);
         }
@@ -798,11 +945,15 @@ const Projects = () => {
             rgba(0,0,0,.1);
 
           cursor: pointer;
+
+          user-select: none;
         }
 
         .project-view-text {
           font-size: 9px;
+
           font-weight: 900;
+
           letter-spacing: 2px;
         }
 
@@ -817,14 +968,18 @@ const Projects = () => {
           color: white;
 
           display: flex;
+
           align-items: center;
+
           justify-content: center;
 
           font-size: 18px;
 
           transition:
             .5s
-            cubic-bezier(.16,1,.3,1);
+            cubic-bezier(
+              .16,1,.3,1
+            );
         }
 
         .project-view:hover
@@ -834,6 +989,23 @@ const Projects = () => {
           transform:
             rotate(45deg)
             scale(1.1);
+        }
+
+        /* =====================================================
+           DISABLED PROJECT
+        ===================================================== */
+
+        .project-view.disabled {
+          cursor: default;
+
+          opacity: .45;
+        }
+
+        .project-view.disabled:hover
+        .project-view-arrow {
+          background: #111;
+
+          transform: none;
         }
 
         /* =====================================================
@@ -848,7 +1020,7 @@ const Projects = () => {
           display: grid;
 
           grid-template-columns:
-            repeat(3,1fr);
+            repeat(5,1fr);
 
           gap: 10px;
         }
@@ -875,7 +1047,9 @@ const Projects = () => {
 
           transition:
             .5s
-            cubic-bezier(.16,1,.3,1);
+            cubic-bezier(
+              .16,1,.3,1
+            );
         }
 
         .project-list-card:hover {
@@ -885,19 +1059,27 @@ const Projects = () => {
 
         .project-list-card.active {
           background: #111;
+
           color: white;
         }
 
         .project-list-number {
           font-size: 8px;
+
           font-weight: 900;
+
           color: #999;
+        }
+
+        .project-list-card.active
+        .project-list-number {
+          color: #aaa;
         }
 
         .project-list-title {
           margin-top: 35px;
 
-          font-size: 21px;
+          font-size: 17px;
 
           line-height: .9;
 
@@ -910,6 +1092,7 @@ const Projects = () => {
           position: absolute;
 
           right: 20px;
+
           bottom: 20px;
 
           font-size: 8px;
@@ -964,9 +1147,14 @@ const Projects = () => {
 
           transition:
             opacity 1s
-            cubic-bezier(.16,1,.3,1),
+            cubic-bezier(
+              .16,1,.3,1
+            ),
+
             transform 1s
-            cubic-bezier(.16,1,.3,1);
+            cubic-bezier(
+              .16,1,.3,1
+            );
         }
 
         .project-visible {
@@ -980,6 +1168,15 @@ const Projects = () => {
            MOBILE
         ===================================================== */
 
+        @media (max-width: 1100px) {
+
+          .project-list {
+            grid-template-columns:
+              repeat(3,1fr);
+          }
+
+        }
+
         @media (max-width: 850px) {
 
           .projects-section {
@@ -989,12 +1186,15 @@ const Projects = () => {
 
           .projects-header h1 {
             font-size: 70px;
+
             letter-spacing: -5px;
           }
 
           .projects-intro {
             flex-direction: column;
-            align-items: flex-start;
+
+            align-items:
+              flex-start;
           }
 
           .project-main {
@@ -1008,12 +1208,13 @@ const Projects = () => {
 
           .project-list {
             grid-template-columns:
-              1fr;
+              repeat(2,1fr);
           }
 
-          .project-symbol {
-            font-size: 150px;
+          .project-visual-year {
+            font-size: 55px;
           }
+
         }
 
         @media (max-width: 500px) {
@@ -1028,11 +1229,13 @@ const Projects = () => {
 
           .project-info {
             min-height: 480px;
+
             padding: 25px;
           }
 
           .project-title {
             font-size: 45px;
+
             margin-top: 45px;
           }
 
@@ -1044,18 +1247,46 @@ const Projects = () => {
             gap: 25px;
           }
 
+          .project-list {
+            grid-template-columns: 1fr;
+          }
+
+          .project-visual-top {
+            top: 18px;
+
+            left: 18px;
+
+            right: 18px;
+          }
+
+          .project-visual-bottom {
+            left: 18px;
+
+            right: 18px;
+
+            bottom: 18px;
+          }
+
+          .project-image-badge {
+            left: 18px;
+
+            top: 65px;
+          }
+
         }
 
         @media (prefers-reduced-motion: reduce) {
 
           .project-tech-track,
-          .project-symbol {
+          .project-preview-image {
             animation: none;
           }
 
           .project-reveal {
             opacity: 1;
+
             transform: none;
+
             transition: none;
           }
 
@@ -1067,7 +1298,6 @@ const Projects = () => {
 
       `}</style>
 
-
       {/* =====================================================
           BACKGROUND
       ===================================================== */}
@@ -1077,7 +1307,6 @@ const Projects = () => {
       </div>
 
       <div className="projects-cursor" />
-
 
       {/* =====================================================
           HEADER
@@ -1098,6 +1327,7 @@ const Projects = () => {
         <h1>
           THINGS
           <br />
+
           <span className="projects-outline">
             I BUILT.
           </span>
@@ -1113,14 +1343,16 @@ const Projects = () => {
           </p>
 
           <div className="projects-total">
-            <strong>03</strong>
+
+            <strong>05</strong>
+
             PROJECTS
+
           </div>
 
         </div>
 
       </header>
-
 
       {/* =====================================================
           MOVING TECH STRIP
@@ -1139,6 +1371,7 @@ const Projects = () => {
             "REST API",
             "CHART.JS",
             "GIT / GITHUB",
+
             "REACT.JS",
             "JAVASCRIPT",
             "MATERIAL UI",
@@ -1166,7 +1399,6 @@ const Projects = () => {
 
       </div>
 
-
       {/* =====================================================
           SELECTOR
       ===================================================== */}
@@ -1183,6 +1415,7 @@ const Projects = () => {
 
             <button
               key={item.number}
+
               className={`
                 project-selector-button
                 ${
@@ -1191,11 +1424,14 @@ const Projects = () => {
                     : ""
                 }
               `}
+
               onClick={() =>
                 setActiveProject(index)
               }
             >
+
               {item.number}
+
             </button>
 
           ))}
@@ -1204,22 +1440,35 @@ const Projects = () => {
 
       </div>
 
-
       {/* =====================================================
           MAIN PROJECT
       ===================================================== */}
 
       <div className="project-main project-reveal">
 
-        {/* VISUAL */}
+        {/* =====================================================
+            PROJECT IMAGE
+        ===================================================== */}
 
         <div
           className="project-visual"
+
           onMouseMove={handleTilt}
+
           onMouseLeave={resetTilt}
+
+          onClick={openProject}
         >
 
-          <div className="project-grid" />
+          <img
+            src={project.image}
+
+            alt={`${project.title} ${project.subtitle}`}
+
+            className="project-preview-image"
+          />
+
+          <div className="project-image-overlay" />
 
           <div className="project-visual-top">
 
@@ -1233,8 +1482,12 @@ const Projects = () => {
 
           </div>
 
-          <div className="project-symbol">
-            {project.symbol}
+          <div className="project-image-badge">
+
+            {project.url
+              ? "OPEN PROJECT"
+              : "PROJECT PREVIEW"}
+
           </div>
 
           <div className="project-visual-bottom">
@@ -1253,8 +1506,9 @@ const Projects = () => {
 
         </div>
 
-
-        {/* INFORMATION */}
+        {/* =====================================================
+            INFORMATION
+        ===================================================== */}
 
         <div className="project-info">
 
@@ -1267,11 +1521,10 @@ const Projects = () => {
               </span>
 
               <span className="project-info-index">
-                {project.number}/03
+                {project.number}/05
               </span>
 
             </div>
-
 
             <h2 className="project-title">
 
@@ -1285,11 +1538,9 @@ const Projects = () => {
 
             </h2>
 
-
             <p className="project-description">
               {project.description}
             </p>
-
 
             <div className="project-info-tech">
 
@@ -1305,18 +1556,26 @@ const Projects = () => {
 
           </div>
 
+          {/* =====================================================
+              EXPLORE PROJECT
+          ===================================================== */}
 
           <div
-            className="project-view"
-            onClick={() =>
-              console.log(
-                `Selected ${project.title} ${project.subtitle}`
-              )
-            }
+            className={`project-view ${
+              !project.url
+                ? "disabled"
+                : ""
+            }`}
+
+            onClick={openProject}
           >
 
             <span className="project-view-text">
-              EXPLORE PROJECT
+
+              {project.url
+                ? "EXPLORE PROJECT"
+                : "PROJECT PREVIEW"}
+
             </span>
 
             <span className="project-view-arrow">
@@ -1329,7 +1588,6 @@ const Projects = () => {
 
       </div>
 
-
       {/* =====================================================
           PROJECT LIST
       ===================================================== */}
@@ -1340,6 +1598,7 @@ const Projects = () => {
 
           <div
             key={item.number}
+
             className={`
               project-list-card
               ${
@@ -1348,6 +1607,7 @@ const Projects = () => {
                   : ""
               }
             `}
+
             onClick={() =>
               setActiveProject(index)
             }
@@ -1377,7 +1637,6 @@ const Projects = () => {
 
       </div>
 
-
       {/* =====================================================
           BOTTOM STATEMENT
       ===================================================== */}
@@ -1387,6 +1646,7 @@ const Projects = () => {
         <div className="projects-bottom-title">
 
           IDEAS
+
           <br />
 
           <span>
